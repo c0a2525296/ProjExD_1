@@ -30,22 +30,19 @@ def main():
         # キーボード入力
         key_lst = pg.key.get_pressed()
 
-        vx = -1      # デフォルトで左へ流れる
-        vy = 0
-
-        if key_lst[pg.K_RIGHT]:
-            vx += 2     # -5 + 10 = 5 → 右へ移動
-
-        if key_lst[pg.K_LEFT]:
-            vx -= 1
+        kk_rct.move_ip(-1,0)
 
         if key_lst[pg.K_UP]:
-            vy -= 1
+            kk_rct.move_ip(0, -1)
 
         if key_lst[pg.K_DOWN]:
-            vy += 1
+            kk_rct.move_ip(0, 1)
 
-        kk_rct.move_ip(vx, vy)
+        if key_lst[pg.K_LEFT]:
+            kk_rct.move_ip(-1, 0)
+
+        if key_lst[pg.K_RIGHT]:
+            kk_rct.move_ip(2, 0)
         screen.blit(kk_img, kk_rct)
         pg.display.update()
         tmr += 1        
